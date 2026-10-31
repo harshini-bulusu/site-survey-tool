@@ -24,6 +24,11 @@ backend/jdk-*/
 backend/openjdk-*/
 backend/run_backend.ps1
 
+# Environment files
+.env
+.env.*
+!.env.example
+
 # IDEs
 .idea/
 .vscode/

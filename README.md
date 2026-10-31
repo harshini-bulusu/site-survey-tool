@@ -60,6 +60,23 @@ Before running the application, make sure you have:
 3. Node.js and npm
 4. MySQL installed and running
 
+## Security Setup
+This project keeps secrets out of source control.
+
+1. Copy `.env.example` to `.env` in the project root.
+2. Fill in your own local values in `.env`.
+3. Do not commit `.env`.
+
+Example:
+```env
+DB_URL=jdbc:mysql://localhost:3306/sitesurvey?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+DB_USERNAME=root
+DB_PASSWORD=your_mysql_password_here
+JWT_SECRET=your_secure_jwt_secret
+JWT_EXPIRATION=86400000
+UPLOAD_DIR=./uploads
+```
+
 ## Database Setup
 Create the database in MySQL:
 ```sql
@@ -69,14 +86,7 @@ CREATE DATABASE sitesurvey;
 Then verify the database settings in:
 - `backend/src/main/resources/application.properties`
 
-Default config uses:
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/sitesurvey?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
-spring.datasource.username=root
-spring.datasource.password=root@123
-```
-
-If your local MySQL username/password are different, update them before starting the backend.
+The file uses environment variables with safe defaults, so your real secrets stay outside the repository.
 
 ## Run the Application
 
